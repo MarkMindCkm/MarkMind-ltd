@@ -1,0 +1,797 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+::selection {
+  background: rgba(0, 0, 255, 0.3) !important
+}
+
+.add-comment ::selection {
+  background-color: blueviolet !important;
+}
+
+.mm-highlight {
+  position: absolute;
+  background-color: red;
+  z-index: 3;
+}
+
+.mm-highlight.active {
+  border: 1px solid blue;
+}
+
+.viewerHeader {
+  display: flex;
+}
+
+.viewerHeader div {
+  height: 100%;
+  vertical-align: middle;
+  flex: 1;
+}
+
+.header-center {
+  text-align: center;
+}
+
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.header-right {
+  text-align: right;
+}
+
+.icon:hover {
+  background-color: #f5f5f5;
+}
+
+.icon-toggle {
+  margin-left: 10px;
+  background: url('./images/toolbarButton-sidebarToggle.svg') center center no-repeat;
+}
+
+.icon-zoomOut {
+  margin-left: 10px;
+  background: url('./images/toolbarButton-zoomOut.svg') center center no-repeat;
+}
+
+.icon-zoomIn {
+  margin-left: 10px;
+  background: url('./images/toolbarButton-zoomIn.svg') center center no-repeat;
+}
+
+.icon-createImage {
+  background: url('./images/screenshort.svg') center center no-repeat;
+}
+
+.icon-info {
+  margin-right: 10px;
+  background: url('./images/secondaryToolbarButton-documentProperties.svg') center center no-repeat;
+}
+
+.viewerSider {
+  width: 260px;
+  overflow: auto;
+  border-right: 1px solid #ccc;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.viewerSiderMenu {
+  height: 30px;
+  line-height: 30px;
+  flex-shrink: 0;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.viewerSiderAnnotate {
+  background-color: #eaeaea;
+  height: 100%;
+  overflow: auto;
+}
+
+.annotate-item {
+  width: 96%;
+  display: block;
+  margin: 4px auto;
+  background-color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.annotate-item-header {
+  line-height: 24px;
+  font-weight: bold;
+  padding: 0 6px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.annotate-item-content {
+  padding: 6px;
+  box-sizing: border-box;
+  font-size: 12px;
+  overflow: auto;
+}
+
+.annotate-item-content img {
+  width: 100%;
+}
+
+.annotate-item-content blockquote {
+  padding: 0;
+  margin: 0;
+  border-left: 0.2em solid #ccc;
+  padding-left: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.annotate-item.active .annotate-item-content blockquote {
+  display: block;
+  -webkit-line-clamp: initial;
+  -webkit-box-orient: initial;
+}
+
+.mm-highlight-yellow .annotate-item-content blockquote {
+  border-left: 0.2em solid rgb(247, 255, 0);
+}
+
+.mm-highlight-green .annotate-item-content blockquote {
+  border-left: 0.2em solid rgb(125, 240, 102);
+}
+
+.mm-highlight-blue .annotate-item-content blockquote {
+  border-left: 0.2em solid rgb(143, 222, 249);
+}
+
+.mm-highlight-pink .annotate-item-content blockquote {
+  border-left: 0.2em solid rgb(247, 153, 209);
+}
+
+.mm-highlight-red .annotate-item-content blockquote {
+  border-left: 0.2em solid rgb(253, 73, 73);
+}
+
+.annotate-menu,
+.annotate-highlight {
+  position: absolute;
+  left: 100px;
+  top: 200px;
+  display: none;
+  padding: 4px;
+  border-radius: 2px;
+  border: 1px solid #e1e1e1;
+  background-color: #ffff;
+  z-index: 30;
+}
+
+.annotate-menu button,
+.annotate-highlight button {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  background-color: transparent;
+  margin: 0 2px;
+  cursor: pointer;
+}
+
+.annotate-menu button svg {
+  margin-top: 2px;
+  margin-left: 2px;
+}
+
+.textLayer {
+  z-index: 2;
+  opacity: .8;
+  mix-blend-mode: multiply;
+}
+
+
+.annotateLayer {
+  opacity: 0.6;
+}
+
+.annotate-item.active {
+  box-shadow: 0 0 3px #ccc;
+  border: 2px solid blue;
+}
+
+.annotate-item.active .annotate-item-note {
+  min-height: 30px;
+  line-height: 20px;
+}
+
+.annotate-item-note {
+  border: 1px solid #f5f5f5;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  padding: 4px;
+  font-size: 12px;
+}
+
+.annotate-comment {
+  width: 300px;
+  max-width: 600px;
+  height: 200px;
+  max-height: 500px;
+  position: absolute;
+  z-index: 200;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: rgb(255 246 203) !important;
+  box-shadow: 0 0 8px #dadada;
+  border: 1px solid #fddb60;
+  overflow-y: auto;
+}
+
+.comment-bar {
+  cursor: pointer !important;
+  z-index: 120 !important;
+  position: absolute;
+}
+
+.comment-bar:hover {
+  background-color: #f5f5f5;
+  box-shadow: 0 0 8px #ccc;
+}
+
+#showAnnotation {
+  border: 0;
+  margin-left: 1px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 3px;
+}
+
+#showAnnotation:hover {
+  background-color: #f5f5f5;
+}
+
+#showAnnotation.toggled {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+
+.annotate .annotate-head {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 24px;
+  background-color: transparent;
+  cursor: move;
+  display: none;
+}
+
+.annotate .annotate-resize {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 0;
+  bottom: 0;
+  display: none;
+  cursor: se-resize;
+}
+
+.annotate:hover .annotate-resize,
+.annotate:hover .annotate-head,
+.annotate.active .annotate-resize,
+.annotate-resize .annotate-head {
+  display: block;
+}
+
+.add-comment {
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  background-color: #fff;
+  padding: 10px;
+  display: none;
+  z-index: 2000;
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
+}
+
+.add-comment textarea {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  outline: none;
+}
+
+.annotate-translate {
+  width: 280px;
+  position: absolute;
+  max-height: 300px;
+  border: 1px solid #e1e1e1;
+  background-color: #ffff;
+  border-radius: 3px;
+  display: none;
+  min-height: 60px;
+  padding: 10px;
+  z-index: 20;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.annotate-translate-comment {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex: auto;
+  overflow-y: auto;
+}
+
+
+body {
+  overflow: hidden;
+}
+
+.editorBtn {
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 6px;
+  margin-top: 4px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.editorBtn.active {
+  background-color: #898989;
+  border-radius: 3px;
+}
+
+.mm-annotate-menucontent {
+  position: absolute;
+  height: 30px;
+  width: 160px;
+  flex-direction: row;
+  justify-items: center;
+  background-color: #fff;
+  box-shadow: 0 0 3px #ccc;
+  z-index: 100;
+  cursor: pointer;
+
+}
+
+.mm-annotate-menu {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.mm-annotate-menu span {
+  flex: 1;
+  user-select: none;
+}
+
+.mm-annotate-menu span:hover {
+  background-color: #f5f5f5;
+}
+
+/* select box */
+.selectBox {
+  position: absolute;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px dashed blueviolet;
+  box-sizing: border-box;
+  user-select: none;
+  cursor: default;
+}
+
+.selectBoxRexize {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  display: none;
+}
+
+.selectBox.resize .selectBoxRexize {
+  display: block;
+}
+
+.selectBoxRexizeLeft {
+  left: 2px;
+  top: 50%;
+  margin-top: -10px;
+  cursor: ew-resize;
+}
+
+.selectBoxRexizeLeft svg {
+  transform: rotate(-180deg)
+}
+
+.selectBoxRexizeUp {
+  top: 2px;
+  left: 50%;
+  margin-left: -10px;
+  cursor: ns-resize;
+}
+
+.selectBoxRexizeUp svg {
+  transform: rotate(-90deg)
+}
+
+.selectBoxRexizeRight {
+  right: 2px;
+  top: 50%;
+  margin-top: -10px;
+  cursor: ew-resize;
+}
+
+.selectBoxRexizeBottom {
+  bottom: 2px;
+  left: 50%;
+  margin-left: -10px;
+  cursor: ns-resize;
+}
+
+.selectBoxRexizeBottom svg {
+  transform: rotate(90deg)
+}
+
+
+.addColor {
+  position: relative;
+}
+
+.addColor span {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.addColor ul {
+  position: absolute;
+  display: none;
+  top: 40px;
+  left: -100px;
+  background: #fff;
+  padding: 6px;
+  box-shadow: 0 0 6px #efeeee;
+}
+
+.addColor li {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 3px;
+}
+
+
+/* 标注按钮 */
+.annotation-menu {
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 0 6px #ccc;
+  height: 30px;
+  width: 230px;
+  display: none;
+  left: 0px;
+  top: 0px;
+  z-index: 20;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.annotation-menu ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.annotation-menu ul li {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 2px 4px;
+  text-align: center;
+}
+
+.annotation-menu ul li:hover {
+  opacity: 0.9;
+}
+
+
+.annotation-note {
+  position: absolute;
+  width: 280px;
+  height: 180px;
+
+  /* overflow: hidden; */
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 6px #ccc;
+  border-radius: 3px;
+  z-index: 10;
+  display: none;
+  box-sizing: border-box;
+  user-select: auto;
+}
+
+.annotation-note:hover {
+  z-index: 200;
+}
+
+.annotation-note textarea {
+  width: 100%;
+  height: 100%;
+  display: block;
+  outline: none;
+  border: 0;
+  user-select: auto;
+}
+
+.annotation-note ::selection {
+  background-color: blueviolet;
+}
+
+.annotation-note .annotation-note-close {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: -10px;
+  top: -10px;
+  cursor: pointer;
+}
+
+.annotation-note-close>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(245 245 245);
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 6px #ccc;
+}
+
+
+/* 图片弹框 */
+.annotate-image {
+  display: none;
+  position: absolute;
+  z-index: 3000;
+  background-color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  min-width: 300px;
+  max-width: 800px;
+  min-height: 100px;
+  max-height: 500px;
+  box-shadow: 0 0 6px #ccc;
+}
+
+.annotate-image-close {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: -10px;
+  top: -10px;
+  cursor: pointer;
+}
+
+.annotate-image-close>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(245 245 245);
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 6px #ccc;
+}
+
+.annotate-image img {
+  max-width: 100%;
+}
+
+
+
+/* 左侧标注 */
+#showAnnotation.toggled {
+  background-color: #a5a5a5;
+  border-radius: 3px;
+}
+
+.viewerSider {
+  width: 260px;
+  overflow: auto;
+  border-right: 1px solid #ccc;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.viewerSiderMenu {
+  height: 30px;
+  line-height: 30px;
+  flex-shrink: 0;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.viewerSiderAnnotate {
+  background-color: #eaeaea;
+  height: 100%;
+  overflow: auto;
+  padding-bottom: 30px;
+  box-sizing: border-box;
+}
+
+.annotate-item {
+  width: 96%;
+  display: block;
+  margin: 4px auto;
+  background-color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.annotate-item-header {
+  line-height: 24px;
+  font-weight: bold;
+  padding: 0 6px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.annotate-item-content {
+  padding: 6px;
+  box-sizing: border-box;
+  font-size: 12px;
+  overflow: auto;
+}
+
+.annotate-item-content img {
+  width: 100%;
+}
+
+.annotate-item-content blockquote {
+  padding: 0;
+  margin: 0;
+  border-left: 0.2em solid #ccc;
+  padding-left: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.annotate-item.active .annotate-item-content blockquote {
+  display: block;
+  -webkit-line-clamp: initial;
+  -webkit-box-orient: initial;
+}
+
+.mm-highlight-yellow .annotate-item-content blockquote {
+  border-left: 0.2em solid rgb(247, 255, 0);
+}
+
+.mm-highlight-green .annotate-item-content blockquote {
+  border-left: 0.2em solid rgb(125, 240, 102);
+}
+
+.mm-highlight-blue .annotate-item-content blockquote {
+  border-left: 0.2em solid rgb(143, 222, 249);
+}
+
+.mm-highlight-pink .annotate-item-content blockquote {
+  border-left: 0.2em solid rgb(247, 153, 209);
+}
+
+.mm-highlight-red .annotate-item-content blockquote {
+  border-left: 0.2em solid rgb(253, 73, 73);
+}
+
+
+.annotate-item.active {
+  box-shadow: 0 0 3px #ccc;
+  border: 2px solid blue;
+}
+
+.annotate-item.active .annotate-item-note {
+  min-height: 30px;
+  line-height: 20px;
+}
+
+.annotate-item-note {
+  border: 1px solid #f5f5f5;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  padding: 4px;
+  font-size: 12px;
+}
+
+.annotate-comment {
+  width: 300px;
+  max-width: 600px;
+  height: 200px;
+  max-height: 500px;
+  position: absolute;
+  z-index: 200;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: rgb(255 246 203) !important;
+  box-shadow: 0 0 8px #dadada;
+  border: 1px solid #fddb60;
+  overflow-y: auto;
+}
+
+.comment-bar {
+  cursor: pointer !important;
+  z-index: 120 !important;
+  position: absolute;
+}
+
+.comment-bar:hover {
+  background-color: #f5f5f5;
+  box-shadow: 0 0 8px #ccc;
+}
+
+/* 翻译 */
+
+.annotate-translate {
+  width: 280px;
+  position: absolute;
+  max-height: 300px;
+  border: 1px solid #e1e1e1;
+  background-color: #ffff;
+  border-radius: 3px;
+  display: none;
+  min-height: 60px;
+  padding: 10px;
+  z-index: 20;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.annotate-translate-comment {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex: auto;
+  overflow-y: auto;
+}

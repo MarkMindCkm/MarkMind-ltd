@@ -1,0 +1,99 @@
+.ebook {
+  background: #cecece!important;
+  color: #575a5f!important;
+}
+
+.title-wrapper, .menu-wrapper, .setting-wrapper, .ebook-popup-list, .content, .slide-bookmark-title {
+  background: #cecece!important;
+  color: #4c5059!important;
+}
+
+.slide-content-wrapper {
+  background: rgba(120, 120, 120, .7)!important;
+  color: #1c2029!important;
+}
+
+.content-page-tab {
+  border-top: 1px solid #b8b9bb!important;
+}
+
+.slide-contents-search-input-wrapper {
+  border: 1px solid #b8b9bb!important;
+}
+
+.slide-contents-search-input, slide-contents-book-title, slide-contents-book-progress {
+  color: #4c5059!important;
+}
+
+.slide-contents-search-cancel, .content-page-tab-item.selected, .content-search-text, .slide-contents-item-label.selected {
+  color: #346cb9!important;
+  font-weight: bold!important;
+}
+
+.slide-contents-book-wrapper, .slide-search-item, .slide-contents-item, .slide-bookmark-title, .slide-bookmark-item {
+  border-bottom: 1px solid #b8b9bb!important;
+}
+
+.slide-contents-book-author, slide-contents-book-time, slide-contents-item-page, .slide-bookmark-item-icon .icon-bookmark {
+  color: #6d7278!important;
+}
+
+.setting-font-size .select .line {
+  border-top: 1px solid #acadaf!important;
+}
+
+.setting-font-size .select .point-wrapper {
+  border-left: 1px solid #acadaf!important;
+}
+
+.setting-font-size .select .point-wrapper .point {
+  background: #cecece!important;
+  border: 1px solid #ccc!important;
+}
+
+.setting-font-size .select .point-wrapper .point .small-point {
+  background: #5d6268!important;
+}
+
+.ebook-popup-list .ebook-popup-title {
+  border-bottom: 1px solid #b8b9bb!important;
+}
+
+.ebook-popup-list .ebook-popup-list-wrapper .ebook-popup-item-text.selected, .ebook-popup-list .ebook-popup-list-wrapper .ebook-popup-item-check .icon-check {
+  color: #346cb9!important;
+  font-weight: bold!important;
+}
+
+.setting-wrapper .setting-theme .setting-theme-item .preview {
+  border: none!important;
+}
+
+.setting-wrapper .setting-theme .setting-theme-item .preview.selected {
+  border: 2px solid #5e6369!important;
+}
+
+.setting-wrapper .setting-progress .progress-wrapper .progress {
+  background: -webkit-linear-gradient(#5d6268, #5d6268) no-repeat, #b4b5b7;
+}
+
+.setting-progress .progress-wrapper .progress::-webkit-slider-thumb {
+  background: #ceced0!important;
+  border: none!important;
+}
+
+.setting-font-size .select-wrapper:first-child .line:first-child {
+  border-top: none!important;
+}
+
+.setting-font-size .select-wrapper:last-child .line:last-child {
+  border-top: none!important;
+}
+
+.setting-wrapper .setting-theme .setting-theme-item .text {
+  color: #4c5059!important;
+}
+
+.setting-wrapper .setting-theme .setting-theme-item .text.selected {
+  color: #4c5059!important;
+  font-weight: bold!important;
+}

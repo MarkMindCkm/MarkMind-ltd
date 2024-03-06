@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PDF Annotator</title>
+    <link rel="stylesheet" type="text/css" href="./pdfjs-dist/web/pdf_viewer.css">
+    
+    <style>
+
+       html,body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+       }
+       #pdfViewerContainer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding-top:40px;
+            display: flex;
+       }
+
+       .viewerHeader{
+            height:40px;
+            background-color: #fff;
+            border-bottom: 1px solid #ccc;
+            position: absolute;
+            left:0;
+            right: 0;
+            top:0;
+            z-index: 1000;
+       }
+
+       #viewerContainer{
+            overflow: auto;
+            position: relative;
+            height: calc(100% - 50px);
+            scroll-behavior: smooth;
+            flex:auto
+       }
+      
+       .mm-highlight{
+         position: absolute;
+         background-color: red;
+         z-index:3;
+       }
+       .mm-highlight.active{
+           border:1px solid blue;
+       }
+
+       .viewerHeader{
+            display: flex;
+       }
+       .viewerHeader div{
+            height: 100%;
+            vertical-align: middle;
+            flex:1;
+       }
+       .header-center{
+            text-align: center;
+       }
+       .icon{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            border:0;
+            outline: none;
+            cursor: pointer;
+            margin-top:8px;
+       }
+       .header-right{
+            text-align: right;
+       }
+       .icon:hover{
+            background-color: #f5f5f5;
+       }
+
+       .icon-toggle {
+            margin-left:10px;
+            background: url('./web/images/toolbarButton-sidebarToggle.svg') center center no-repeat;
+       }
+       .icon-zoomOut {
+          margin-left:10px;
+            background: url('./web/images/toolbarButton-zoomOut.svg') center center no-repeat;
+       }
+
+       .icon-zoomIn {
+          margin-left:10px;
+            background: url('./web/images/toolbarButton-zoomIn.svg') center center no-repeat;
+       }
+
+       .icon-createImage{
+          background: url('./web/images/screenshort.svg') center center no-repeat;
+       }
+
+       .icon-info{
+          margin-right:10px;
+          background: url('./web/images/secondaryToolbarButton-documentProperties.svg') center center no-repeat;
+       }
+
+       .viewerSider{
+          width:260px;
+          overflow: auto;
+          border-right:1px solid #ccc;
+          flex-shrink:0;
+          display: flex;
+          flex-direction: column;
+       }
+       .viewerSiderMenu{
+            height:30px;
+            line-height: 30px;
+            flex-shrink:0;
+            background-color: #f5f5f5;
+            text-align:center;
+       }
+       .viewerSiderAnnotate{
+            background-color: cadetblue;
+            height:calc(100%  - 80px);
+            overflow: auto;
+       }
+
+       .annotate-item{
+            width: 96%;
+            display: block;
+            margin:4px auto;
+            background-color: #fff;
+            border-radius:4px;
+            font-size: 14px;
+            cursor: pointer;
+       }
+
+       .annotate-item-header{
+            line-height: 24px;
+            font-weight: bold;
+            padding: 0 6px;
+            border-bottom:1px solid #e5e5e5;
+       }
+
+       .annotate-item-content{
+            padding: 6px;
+            box-sizing: border-box;
+            font-size: 12px;
+       }
+
+       .annotate-item-content blockquote{
+          padding: 0;
+          margin: 0;
+          border-left:0.2em solid #ccc;
+          padding-left: 6px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+       }
+
+       .annotate-item.active .annotate-item-content blockquote{
+     
+          display: block;
+          -webkit-line-clamp: initial;
+          -webkit-box-orient: initial;
+       }
+       .mm-highlight-yellow .annotate-item-content blockquote{
+          border-left:0.2em solid rgb(247,255,0);
+       }
+       .mm-highlight-green .annotate-item-content blockquote{
+          border-left:0.2em solid rgb(125,240,102);
+       }
+       .mm-highlight-blue .annotate-item-content blockquote{
+          border-left:0.2em solid rgb(143,222,249);
+       }
+       .mm-highlight-pink .annotate-item-content blockquote{
+          border-left:0.2em solid rgb(247,153,209);
+       }
+       .mm-highlight-red .annotate-item-content blockquote{
+          border-left:0.2em solid rgb(253,73,73);
+       }
+
+     
+       /* .theme-dark .textLayer{
+               background-color: #023d4cf7;
+               -webkit-filter: invert(100%);
+               filter: invert(100%);
+       } */
+       .annotate-menu{
+            position: absolute;
+            left:100px;
+            top:200px;
+            display: none;
+            padding: 4px;
+            border-radius: 2px;
+            border:1px solid #e1e1e1;
+            background-color: #ffff;
+            z-index: 10;
+            
+       }
+       .annotate-menu button{
+            width: 20px;
+            height:20px;
+            border:0;
+            outline: none;
+            margin:0;
+            padding:0;
+            vertical-align: middle;
+            background-color: transparent;
+            margin: 0 2px;
+            cursor: pointer;
+      }
+        
+          .annotate-menu button svg{
+            margin-top:2px;
+            margin-left:2px;
+          } 
+          .textLayer{
+                z-index: 2; 
+                opacity: .8;
+                mix-blend-mode: multiply;
+          }
+          .annotateLayer{
+              opacity: 0.6;
+          }
+
+          .annotate-item.active{
+               box-shadow: 0 0 3px #ccc;
+               border:2px solid blue;
+          }
+
+          .annotate-item.active .annotate-item-note{
+               min-height: 30px;
+               line-height:20px ;
+          }
+
+          .annotate-item-note{
+               border:1px solid #f5f5f5;
+               width: 100%;
+               box-sizing: border-box;
+               outline: none;
+               padding: 4px ;
+               font-size: 12px;
+          }
+          .annotate-comment {
+               width: 300px;
+               max-width: 600px;
+               height:200px;
+               max-height: 500px;
+               position: absolute;
+               z-index: 200;
+               border-radius:5px;
+               font-size: 14px;
+               background-color: rgb(255 246 203)!important;
+               box-shadow: 0 0 8px #dadada;
+               border: 1px solid #fddb60;
+               overflow-y:auto;
+}
+
+          .comment-bar{
+               cursor: pointer!important;
+               z-index: 120!important;
+               position: absolute;
+               }
+
+          .comment-bar:hover{
+               background-color: #f5f5f5;
+               box-shadow: 0 0 8px #ccc;
+          }
+
+    </style>
+
+    <script src="./pdfjs-dist/build/pdf.js"></script>
+    <script src="./pdfjs-dist/web/pdf_viewer.js"></script>
+    <script src="./jquery.js" async></script>
+    <script src="./text.js" async></script>
+    <script src="./extract.js" async></script>
+    <script src="./index.js" async></script>
+
+</head>
+<body>
+
+ <div id="pdfViewerContainer" class="theme-dark">
+      <div class="viewerHeader">
+            <div class="header-left">
+                  <button class="icon icon-toggle"></button>
+                  <button class="icon icon-zoomOut"></button>
+                  <button class="icon icon-zoomIn"></button>
+            </div>
+            <div class="header-center"></div>
+            <div class="header-right">
+               <button class="icon icon-createImage"></button>
+               <button class="icon icon-info"></button>
+            </div>
+      </div>
+      <div class="viewerSider">
+            <div class="viewerSiderMenu">
+                  <span class="icon icon-annotate"></span>
+                  <span class="icon icon-nav"></span>
+            </div>
+            <div class="viewerSiderAnnotate"></div>
+            <div class="viewerSiderNav"></div>
+      </div>
+
+      <div id="viewerContainer">
+          <div id="viewer" class="pdfViewer"></div>
+      </div>
+
+</div>
+<div class="annotate-menu">
+
+      <button class="annoate-btn" data-color="247,255,0"  style="background:rgb(247,255,0)" title="highlight"></button>
+      <button class="annoate-btn" data-color="125,240,102" style="background:rgb(125,240,102)" title="highlight"></button>
+      <button class="annoate-btn" data-color="143,222,249" style="background:rgb(143,222,249)" title="highlight"></button>
+      <button class="annoate-btn" data-color="247,153,209"  style="background:rgb(247,153,209)" title="highlight"></button>
+      <button class="annoate-btn" data-color="253,73,73"  style="background:rgb(253,73,73)" title="highlight"></button>
+  
+      <!-- <button class="annoate-btn rect"  title="rect">
+        <svg t="1629205788661"  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19259" width="16" height="16"><path d="M948.079971 0H75.932467a75.870278 75.870278 0 0 0-75.870278 75.870278v872.209693a75.870278 75.870278 0 0 0 75.932467 75.870278h872.085315a75.870278 75.870278 0 0 0 75.870278-75.870278V75.920029a75.870278 75.870278 0 0 0-75.870278-75.920029z m25.310822 928.614891a44.775902 44.775902 0 0 1-44.775902 44.775902H95.397546a44.775902 44.775902 0 0 1-44.775901-44.775902V95.372671a44.775902 44.775902 0 0 1 44.775901-44.775902h833.217345a44.775902 44.775902 0 0 1 44.775902 44.775902z" p-id="19260"></path><path d="M246.864472 106.355205L104.178598 249.041079v64.676302L311.590526 106.355205z m175.869793 0L104.178598 424.898433v64.676303L487.44788 106.355205z m175.857354 0L104.178598 600.768225v64.676303L663.305235 106.355205z m175.857355 0L104.178598 776.613142v64.676303L839.175027 106.355205z m144.850042 33.320733a40.211247 40.211247 0 0 0-8.855678 6.69151L137.524207 919.137325c-0.72139 0.72139-1.082084 1.579594-1.728847 2.32586h64.116604l719.387052-719.362177z m0 173.543933l-608.206 608.206h64.738491l543.529698-543.529697z m0 175.869793L486.913057 921.463185h64.676303l367.659905-367.647468z m0 175.857354L662.770412 921.463185h64.676302l191.852302-191.765238z m0 0" p-id="19261"></path></svg>
+      </button>
+      <button class="annoate-btn comment" title="comment">
+        <svg t="1632184139610"  viewBox="0 0 1058 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2617" width="16" height="16"><path d="M330.744242 885.372121l194.779798-129.861818 16.665859-11.106263h383.844848c36.486465 0 66.19798-29.659798 66.19798-66.146262v-529.19596c0-36.434747-29.711515-66.107475-66.19798-66.107475H132.305455c-36.486465 0-66.146263 29.659798-66.146263 66.107475v529.19596c0 36.486465 29.659798 66.146263 66.146263 66.146262h198.438787v140.968081m-66.146262 123.578182V810.550303H132.305455c-73.024646 0-132.305455-59.216162-132.305455-132.292525v-529.19596C0 76.024242 59.267879 16.808081 132.305455 16.808081h793.742222c73.076364 0 132.357172 59.216162 132.357171 132.240808v529.195959c0 73.076364-59.267879 132.292525-132.357171 132.292526h-363.830303L264.59798 1008.950303z m0 0" p-id="2618"></path></svg>
+      </button>
+  -->
+    
+      <button class="annoate-btn delete"  title="delete annotate">
+          <svg t="1643337518012" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5413" width="18" height="18"><path d="M694.88 940H329.12c-58 0-105.12-43.04-105.12-96v-448a32 32 0 0 1 64 0v448c0 17.36 18.88 32 41.12 32h365.76c22.32 0 41.12-14.64 41.12-32v-448a32 32 0 0 1 64 0v448c0 52.96-47.2 96-105.12 96zM864 304H160a32 32 0 0 1 0-64h704a32 32 0 0 1 0 64z" p-id="5414"></path><path d="M432 812a32 32 0 0 1-32-32v-320a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32zM592 812a32 32 0 0 1-32-32v-320a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32zM384 276a32 32 0 0 1-32-32 160 160 0 0 1 276.16-110 32 32 0 1 1-46.48 44A95.12 95.12 0 0 0 512 148a96 96 0 0 0-96 96 32 32 0 0 1-32 32z" p-id="5415"></path></svg>
+     </button>
+
+   </div>
+</div>
+     
+</body>
+</html>
