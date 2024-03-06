@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+  <script type="text/javascript" src="./pdfjs/src/shared/util.js"></script>
+  <script type="text/javascript" src="./pdfjs/src/core/colorspace.js"></script>
+  <script type="text/javascript" src="./pdfjs/src/core/pattern.js"></script>
+  <script type="text/javascript" src="./pdfjs/src/display/pattern_helper.js"></script>
+  <script type="text/javascript" src="./pdfjs/src/core/function.js"></script>
+  <script type="text/javascript" src="./pdfjs/src/core/annotation.js"></script>
+  <script type="text/javascript" src="./pdfjs/src/display/api.js"></script>
+  <script type="text/javascript" src="./pdfjs/src/display/metadata.js"></script>
+  <script type="text/javascript" src="./pdfjs/src/display/canvas.js"></script>
+  <script type="text/javascript" src="./pdfjs/src/display/font_loader.js"></script>
+  <script type="text/javascript" src="./pdfjs/src/display/webgl.js"></script>
+  <script type="text/javascript" src="./pdfjs/src/getPDFAnnotations.js"></script>
+
+
+  <script type="text/javascript">
+    // Specify the main script used to create a new PDF.JS web worker.
+    var href = window.location.href;
+    var pdf_plugin_path =href.replace('/pdfextract/extract.html','');
+    let cMapUrl = `${pdf_plugin_path}/web/cmaps/`;
+    PDFJS.workerSrc = './pdfjs/src/worker_loader.js';
+    PDFJS.cMapUrl = cMapUrl;
+    PDFJS.cMapPacked = true;
+  </script>
+  <!-- <script type="text/javascript" src="chrome://zotero/content/include.js"></script> -->
+  <script type="text/javascript" src="extract.js"></script>
+</head>
+
+<body>
+  <canvas id="the-canvas" style="border:1px solid black;"/>
+</body>
+
+</html>
