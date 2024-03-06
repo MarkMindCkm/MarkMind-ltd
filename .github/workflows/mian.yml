@@ -64,30 +64,34 @@ jobs:
       - name: cleanup artifacts for windows
         if: matrix.os == 'windows-2019'
         run: |
-          npx rimraf "build/!(*.exe)"
+          mkdir artifacts
+          mv build/*.exe artifacts || true
+         
 
       - name: cleanup artifacts for macosZ
         if: matrix.os == 'macos-10.15'
         run: |
-          npx rimraf "build/!(*.dmg)"
+          mkdir artifacts
+          mv build/*.dmg artifacts || true
           
       - name: cleanup artifacts for ubuntu
         if: matrix.os == 'ubuntu-16.04'
         run: |
-          npx rimraf "build/!(*.AppImage)"
+          mkdir artifacts
+          mv build/*.AppImage artifacts || true
 
       # step6: upload artifacts
       - name: upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.os }}
-          path: build
+          path: artifacts
 
       # step7: create release
       - name: release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: "build/**"
+          files: "'artifacts/**"
         env:
           GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
