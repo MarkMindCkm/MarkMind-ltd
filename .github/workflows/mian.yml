@@ -90,4 +90,4 @@ jobs:
         with:
           files: "build/**"
         env:
-          GITHUB_TOKEN: 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
+          GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
