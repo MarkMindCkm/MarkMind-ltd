@@ -44,21 +44,21 @@ jobs:
         run: |
           npm run build
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
       - name: build mac app
         if: matrix.os == 'macos-10.15'
         run: |
           npm run build
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       
       - name: build linux app
         if: matrix.os == 'ubuntu-16.04'
         run: |
           npm run build
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       
       # step5: cleanup artifacts in dist_electron
       - name: cleanup artifacts for windows
@@ -94,4 +94,4 @@ jobs:
         with:
           files: "'artifacts/**"
         env:
-          GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN:  ${{ secrets.ACCESS_TOKEN }}
