@@ -1,56 +1,11 @@
-"use strict";
-const electron = require("electron");
-electron.contextBridge.exposeInMainWorld("ipcRenderer", withPrototype(electron.ipcRenderer));
-function withPrototype(obj) {
-  const protos = Object.getPrototypeOf(obj);
-  for (const [key, value] of Object.entries(protos)) {
-    if (Object.prototype.hasOwnProperty.call(obj, key))
-      continue;
-    if (typeof value === "function") {
-      obj[key] = function(...args) {
-        return value.call(obj, ...args);
-      };
-    } else {
-      obj[key] = value;
-    }
-  }
-  return obj;
-}
-function domReady(condition = ["complete", "interactive"]) {
-  return new Promise((resolve) => {
-    if (condition.includes(document.readyState)) {
-      resolve(true);
-    } else {
-      document.addEventListener("readystatechange", () => {
-        if (condition.includes(document.readyState)) {
-          resolve(true);
-        }
-      });
-    }
-  });
-}
-const safeDOM = {
-  append(parent, child) {
-    if (!Array.from(parent.children).find((e) => e === child)) {
-      parent.appendChild(child);
-    }
-  },
-  remove(parent, child) {
-    if (Array.from(parent.children).find((e) => e === child)) {
-      parent.removeChild(child);
-    }
-  }
-};
-function useLoading() {
-  const className = `loaders-css__square-spin`;
-  const styleContent = `
+"use strict";const i=require("electron");i.contextBridge.exposeInMainWorld("ipcRenderer",s(i.ipcRenderer));function s(e){const t=Object.getPrototypeOf(e);for(const[n,o]of Object.entries(t))Object.prototype.hasOwnProperty.call(e,n)||(typeof o=="function"?e[n]=function(...d){return o.call(e,...d)}:e[n]=o);return e}function c(e=["complete","interactive"]){return new Promise(t=>{e.includes(document.readyState)?t(!0):document.addEventListener("readystatechange",()=>{e.includes(document.readyState)&&t(!0)})})}const r={append(e,t){Array.from(e.children).find(n=>n===t)||e.appendChild(t)},remove(e,t){Array.from(e.children).find(n=>n===t)&&e.removeChild(t)}};function p(){const e="loaders-css__square-spin",t=`
 @keyframes square-spin {
   25% { transform: perspective(100px) rotateX(180deg) rotateY(0); }
   50% { transform: perspective(100px) rotateX(180deg) rotateY(180deg); }
   75% { transform: perspective(100px) rotateX(0) rotateY(180deg); }
   100% { transform: perspective(100px) rotateX(0) rotateY(0); }
 }
-.${className} > div {
+.${e} > div {
   animation-fill-mode: both;
   width: 50px;
   height: 50px;
@@ -69,27 +24,4 @@ function useLoading() {
   background: #282c34;
   z-index: 9;
 }
-    `;
-  const oStyle = document.createElement("style");
-  const oDiv = document.createElement("div");
-  oStyle.id = "app-loading-style";
-  oStyle.innerHTML = styleContent;
-  oDiv.className = "app-loading-wrap";
-  oDiv.innerHTML = `<div class="${className}"><div></div></div>`;
-  return {
-    appendLoading() {
-      safeDOM.append(document.head, oStyle);
-      safeDOM.append(document.body, oDiv);
-    },
-    removeLoading() {
-      safeDOM.remove(document.head, oStyle);
-      safeDOM.remove(document.body, oDiv);
-    }
-  };
-}
-const { appendLoading, removeLoading } = useLoading();
-domReady().then(appendLoading);
-window.onmessage = (ev) => {
-  ev.data.payload === "removeLoading" && removeLoading();
-};
-setTimeout(removeLoading, 4999);
+    `,n=document.createElement("style"),o=document.createElement("div");return n.id="app-loading-style",n.innerHTML=t,o.className="app-loading-wrap",o.innerHTML=`<div class="${e}"><div></div></div>`,{appendLoading(){r.append(document.head,n),r.append(document.body,o)},removeLoading(){r.remove(document.head,n),r.remove(document.body,o)}}}const{appendLoading:m,removeLoading:a}=p();c().then(m);window.onmessage=e=>{e.data.payload==="removeLoading"&&a()};setTimeout(a,4999);

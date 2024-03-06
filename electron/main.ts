@@ -50,7 +50,7 @@ function createWindow() {
     win?.webContents.send('main-process-message', '')
   });
 
-  Menu.setApplicationMenu(null);
+  // Menu.setApplicationMenu(null);
 
   if (VITE_DEV_SERVER_URL) {
     win.loadURL(VITE_DEV_SERVER_URL)
@@ -81,34 +81,10 @@ app.on('activate', () => {
 app.whenReady().then(createWindow);
 
 
-ipcMain.on('openExportWindow', (e, arg) => {
-  var w = new BrowserWindow({
-   // icon: path.join(process.env.VITE_PUBLIC, 'icon.png')
-    webPreferences: {
-      // preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration: true,
-      contextIsolation: false,
-      webSecurity: false,
-      enableRemoteModule: true
-    },
-  });
-
-  require('@electron/remote/main').enable(w.webContents);
-
-
-
-  w.webContents.on('did-finish-load', () => {
-
-    w?.webContents.send('main-process-message', arg)
-  });
-
-  if (VITE_DEV_SERVER_URL) {
-    win.loadURL(VITE_DEV_SERVER_URL)
-  } else {
-    // win.loadFile('dist/index.html')
-    win.loadFile(path.join(process.env.DIST, 'index.html'))
-  }
-
+ipcMain.on('openDevTools', (e, arg) => {
+    if(win){
+      win.webContents.openDevTools();
+    }
 })
 
 app.on('window-all-closed', () => {
