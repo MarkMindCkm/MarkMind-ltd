@@ -8,6 +8,22 @@
 
 The software features include mind mapping and pdf annotation functions , It can be used alone or with obsidian. The software features are similar to obsidian markmind.
 
+### Feature Comparison
+
+| Free                                     | Catalyst                                           |
+| ---------------------------------------- | -------------------------------------------------- |
+|  `Basic` mode of MindMap                 | Advanced features in `Rich` mode of MindMap        |
+|  Most features in `Rich` mode of MindMap | PDF annotate                                       |
+|  List mode                               | Support development                                |
+|  PC and Mobile support                   | PC and Mobile support                              |
+|  Not support                             | Export mindmap as pdf file                         |
+|  $0                                      | $24 / (forever) Buy [here](https://www.MarkMind.net) |
+
+You can try it for 15 days for free. After 15 days, you can purchase a code on the website.
+
+> The software activation code can also activate obsidian markmind and if  you have purchased the activation code of obsidian markmind forever , you only need to make up the difference to purchase this active code of software. The software is priced at $36 and is currently on sale for only $24 to purchase the permanent version.
+
+
 
 ## Mindmap
 ### How to use mindmap ?
@@ -16,6 +32,25 @@ The software features include mind mapping and pdf annotation functions , It can
 
 - right click to create a folder or midnamp file
 - ![150b0bb7a7e801480102091371bdee8](https://github.com/MarkMindCkm/MarkMind-ltd/assets/18719494/0c756e9d-800a-45ae-a2cf-7747c94d6d42)
+
+
+##### MindMap short cuts
+
+| Feature                               | Short Cut                                 |
+| ------------------------------------- | ----------------------------------------- |
+| New Mind Map                          | CTRL/CMD + P                              |
+| New Child Node                        | Enter                                     |
+| Zoom in/out                           | CTRL + Mouse wheel                        |
+| Mind map to center                    | CTRL/CMD + E                              |
+| Delete node                           | Delete/Backspace                          |
+| Edit node                             | Space/Double click node                   |
+| Undo                                  | CTRL/CMD + Z                              |
+| Redo                                  | CTRL/CMD + Y                              |
+| Expand/Collapse node                  | CTRL/CMD + /                              |
+| Move node to another node             | Drag and drop node                        |
+| Tab node                              | Up/Down/Left/Right                        |
+| Change MindMap layout                 | Select node, CTRL/CMD + U/D/L/R/M/J/K/T/Q |
+| Delete summary/boundary/related link  | Delete/Backspace                          |
 
 
 ### how to use pdf annotator?
