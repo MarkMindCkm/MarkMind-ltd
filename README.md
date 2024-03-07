@@ -1,5 +1,7 @@
 # Markmind 
 
+[中文文档](https://github.com/MarkMindCkm/MarkMind-ltd/blob/main/readme-zh.md)
+
 ---
 
 > Notice：This software can be used with obsidian , Back up your data and familiarize this software functions first.
