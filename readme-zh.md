@@ -1,6 +1,6 @@
 # Markmind 
 
-[English read me](https://github.com/MarkMindCkm/MarkMind-ltd)
+[English](https://github.com/MarkMindCkm/MarkMind-ltd)
 
 ---
 
