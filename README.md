@@ -34,6 +34,21 @@ You can try it for 15 days for free. After 15 days, you can purchase a code on t
 
 - right click to create a folder or midnamp file
 - ![150b0bb7a7e801480102091371bdee8](https://github.com/MarkMindCkm/MarkMind-ltd/assets/18719494/0c756e9d-800a-45ae-a2cf-7747c94d6d42)
+- or use yaml to create a mindmap
+
+#### Creating a MindMap file by use yaml
+
+- It contains two modes: `Basic` and `Rich`
+- You can create a MindMap file by either:
+   - Add the YAML code by hand to a md:
+
+```YAML
+---
+
+mindmap-plugin: basic (or rich)
+
+---
+```
 
 
 ##### MindMap short cuts
