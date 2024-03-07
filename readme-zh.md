@@ -2,6 +2,9 @@
 
 [English](https://github.com/MarkMindCkm/MarkMind-ltd)
 
+[下载软件](https://github.com/MarkMindCkm/MarkMind-ltd/releases)
+
+
 ---
 
 > 注意：本软件可以搭配 obsidian  使用 , 但是首先备份您的数据以及熟悉软件功能.
