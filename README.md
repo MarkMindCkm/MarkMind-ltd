@@ -60,6 +60,13 @@ You can try it for 15 days for free. After 15 days, you can purchase a code on t
 - then you can make pdf annotate
 - ![1234](https://github.com/MarkMindCkm/MarkMind-ltd/assets/18719494/5e17f947-4d95-43ef-934e-1dbd844582ab)
 
+
+### export mind map to a pdf or xmind zen file
+
+Right click on the blank  of the mindmap and click on the menu that pops up.
+![export pdf](https://github.com/MarkMindCkm/MarkMind-ltd/assets/18719494/d37d9f67-667d-4cec-abf9-7eb7fcb305c6)
+
+
 ### settings
 ![00e386affc4144638ec0a773c6339f3](https://github.com/MarkMindCkm/MarkMind-ltd/assets/18719494/30c9f283-eb3f-4e8b-81e6-2baf6e6d81f3)
 
