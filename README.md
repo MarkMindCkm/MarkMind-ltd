@@ -1,6 +1,8 @@
 # Markmind 
 
-[中文文档](https://github.com/MarkMindCkm/MarkMind-ltd/blob/main/readme-zh.md)
+[中文文档](https://github.com/MarkMindCkm/MarkMind-ltd/blob/main/readme-zh.md)  
+
+[Download](https://github.com/MarkMindCkm/MarkMind-ltd/releases)
 
 ---
 
