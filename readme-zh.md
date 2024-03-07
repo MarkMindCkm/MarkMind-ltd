@@ -1,5 +1,7 @@
 # Markmind 
 
+[English read me](https://github.com/MarkMindCkm/MarkMind-ltd)
+
 ---
 
 > 注意：本软件可以搭配 obsidian  使用 , 但是首先备份您的数据以及熟悉软件功能.
