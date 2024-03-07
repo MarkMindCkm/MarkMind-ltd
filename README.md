@@ -74,7 +74,7 @@ mindmap-plugin: basic (or rich)
 
 
 ### how to use pdf annotator?
-- use `[[ ]]` to referencing  a PDF , the click the pdf link , makrmind will open a pdf tab
+- use `[[ ]]` to referencing  a PDF , then click the pdf link , makrmind will open a pdf tab
 - ![73f67d9e87ef12d3c5bf54ba851394e](https://github.com/MarkMindCkm/MarkMind-ltd/assets/18719494/7bde6722-2542-4577-8c72-5feb25a66f06)
 
 - then you can make pdf annotate
