@@ -23,7 +23,7 @@ You can try it for 15 days for free. After 15 days, you can purchase a code on t
 
 > The software activation code can also activate obsidian markmind and if  you have purchased the activation code of obsidian markmind forever , you only need to make up the difference to purchase this active code of software.
 
-<span style='color:red'> The software is priced at $36 and is currently on sale for only $24 to purchase the permanent version.< /span>
+<span style="color:red"> The software is priced at $36 and is currently on sale for only $24 to purchase the permanent version.</span>
 
 
 
