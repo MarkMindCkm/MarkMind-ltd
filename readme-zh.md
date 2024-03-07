@@ -60,8 +60,7 @@ mindmap-plugin: basic (or rich)
 
 | Feature                               | Short Cut                                 |
 | ------------------------------------- | ----------------------------------------- |
-| New Mind Map                          | CTRL/CMD + P                              |
-| New Child Node                        | Enter                                     |
+| New Child Node                        | Enter / Tab                                    |
 | Zoom in/out                           | CTRL + Mouse wheel                        |
 | Mind map to center                    | CTRL/CMD + E                              |
 | Delete node                           | Delete/Backspace                          |
