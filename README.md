@@ -36,7 +36,7 @@ You can try it for 15 days for free. After 15 days, you can purchase a code on t
 - select a folder as vault
 - ![3bab879ada0c47fa214ed4696912c42](https://github.com/MarkMindCkm/MarkMind-ltd/assets/18719494/77c924bc-d207-4cbd-bfbc-9345d2ca30e0)
 
-- right click to create a folder or midnamp file
+- right click to create a folder or mindmap file
 - ![150b0bb7a7e801480102091371bdee8](https://github.com/MarkMindCkm/MarkMind-ltd/assets/18719494/0c756e9d-800a-45ae-a2cf-7747c94d6d42)
 - or use yaml to create a mindmap
 
@@ -80,6 +80,14 @@ mindmap-plugin: basic (or rich)
 - then you can make pdf annotate
 - ![1234](https://github.com/MarkMindCkm/MarkMind-ltd/assets/18719494/5e17f947-4d95-43ef-934e-1dbd844582ab)
 
+- or you can create a pdf annotate md by add `yaml` in a new md
+
+```YAML
+---
+id: test_id
+annotate-target: test/test.pdf
+---
+```
 
 ### export mind map to a pdf or xmind zen file
 
