@@ -98,5 +98,5 @@ Right click on the blank  of the mindmap and click on the menu that pops up.
 ### settings
 ![00e386affc4144638ec0a773c6339f3](https://github.com/MarkMindCkm/MarkMind-ltd/assets/18719494/30c9f283-eb3f-4e8b-81e6-2baf6e6d81f3)
 
-
+The folder of save annotations is a relative path , for example, if your vault have a `asset` folder , you can input `asset` , then restart markmind.
 
