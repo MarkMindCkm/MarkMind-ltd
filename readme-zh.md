@@ -95,5 +95,8 @@ mindmap-plugin: basic (or rich)
 ### 设置
 ![00e386affc4144638ec0a773c6339f3](https://github.com/MarkMindCkm/MarkMind-ltd/assets/18719494/30c9f283-eb3f-4e8b-81e6-2baf6e6d81f3)
 
+设置文件夹保存标注图片的是相对路径，比如库里有个 asset 文件夹，可以设置为 `asset`。
+
+更改设置后请重新打开 markmind ，以使设置生效。
 
 
