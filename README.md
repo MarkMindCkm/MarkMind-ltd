@@ -89,7 +89,7 @@ annotate-target: test/test.pdf
 ---
 ```
 
-### export mind map to a pdf or xmind zen file
+### export mind map to a image or pdf or xmind zen file
 
 Right click on the blank  of the mindmap and click on the menu that pops up.
 ![export pdf](https://github.com/MarkMindCkm/MarkMind-ltd/assets/18719494/d37d9f67-667d-4cec-abf9-7eb7fcb305c6)
