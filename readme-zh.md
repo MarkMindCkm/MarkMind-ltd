@@ -82,7 +82,7 @@ mindmap-plugin: basic (or rich)
 - ![1234](https://github.com/MarkMindCkm/MarkMind-ltd/assets/18719494/5e17f947-4d95-43ef-934e-1dbd844582ab)
 
 
-### 导出思维导图为 pdf 或者 xmind zen 文件
+### 导出思维导图为图片、 pdf 或者 xmind zen 文件
 
 右击导图空白处，点击弹出的按钮即可
 ![export pdf](https://github.com/MarkMindCkm/MarkMind-ltd/assets/18719494/d37d9f67-667d-4cec-abf9-7eb7fcb305c6)
