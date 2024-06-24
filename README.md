@@ -27,7 +27,11 @@ You can try it for 15 days for free. After 15 days, you can purchase a code on t
 
 <span style="color:red">The software is priced at $36 and now is currently on sale for only $24 to purchase the permanent version.</span>
 
-# WYSIWYG markdown editor 
+
+---
+
+
+## WYSIWYG markdown editor 
 
 The markdown editor base on codemirror 6.
 
