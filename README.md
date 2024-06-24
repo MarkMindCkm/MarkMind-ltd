@@ -1,3 +1,32 @@
+
+# Markmind 
+
+---
+
+> Notice：This software can be used with obsidian , Back up your data and familiarize this software functions first.
+
+## introduce
+
+The software features include markdown, mind mapping and pdf annotation functions , It can be used alone or with obsidian. The software features are similar to obsidian markmind.
+
+### Feature Comparison
+
+| Free                                     | Catalyst                                           |
+| ---------------------------------------- | -------------------------------------------------- |
+|   WYSIWYG markdown editor                | WYSIWYG markdown editor                            |
+|  `Basic` mode of MindMap                 | Advanced features in `Rich` mode of MindMap        |
+|  Most features in `Rich` mode of MindMap | PDF annotate                                       |
+|  List mode                               | Support development                                |
+|  PC and Mobile support                   | PC and Mobile support                              |
+|  Not support                             | Export mindmap as pdf file                         |
+|  $0                                      | $24 / (forever) Buy [here](https://www.MarkMind.net) |
+
+You can try it for 15 days for free. After 15 days, you can purchase a code on the website.
+
+> The software activation code can also activate obsidian markmind and if  you have purchased the activation code of obsidian markmind forever , you only need to make up the difference to purchase this active code of software.
+
+<span style="color:red">The software is priced at $36 and now is currently on sale for only $24 to purchase the permanent version.</span>
+
 # WYSIWYG markdown editor 
 
 The markdown editor base on codemirror 6.
@@ -13,36 +42,7 @@ format of markdown support
 
 ---
 
-# Markmind 
 
-[中文文档](https://github.com/MarkMindCkm/MarkMind-ltd/blob/main/readme-zh.md)  
-
-[Download](https://github.com/MarkMindCkm/MarkMind-ltd/releases)
-
----
-
-> Notice：This software can be used with obsidian , Back up your data and familiarize this software functions first.
-
-## introduce
-
-The software features include mind mapping and pdf annotation functions , It can be used alone or with obsidian. The software features are similar to obsidian markmind.
-
-### Feature Comparison
-
-| Free                                     | Catalyst                                           |
-| ---------------------------------------- | -------------------------------------------------- |
-|  `Basic` mode of MindMap                 | Advanced features in `Rich` mode of MindMap        |
-|  Most features in `Rich` mode of MindMap | PDF annotate                                       |
-|  List mode                               | Support development                                |
-|  PC and Mobile support                   | PC and Mobile support                              |
-|  Not support                             | Export mindmap as pdf file                         |
-|  $0                                      | $24 / (forever) Buy [here](https://www.MarkMind.net) |
-
-You can try it for 15 days for free. After 15 days, you can purchase a code on the website.
-
-> The software activation code can also activate obsidian markmind and if  you have purchased the activation code of obsidian markmind forever , you only need to make up the difference to purchase this active code of software.
-
-<span style="color:red">The software is priced at $36 and now is currently on sale for only $24 to purchase the permanent version.</span>
 
 
 
