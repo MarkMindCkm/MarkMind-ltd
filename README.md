@@ -6,7 +6,7 @@
 
 ## introduce
 
-The software features include markdown, mind mapping and pdf annotation functions , It can be used alone or with obsidian. The software features are similar to obsidian markmind.
+The software features include markdown editor, mind mapping and pdf annotation functions , It can be used alone or with obsidian. The software features are similar to obsidian markmind.
 
 ### Feature Comparison
 
