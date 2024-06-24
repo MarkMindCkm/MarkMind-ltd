@@ -99,4 +99,17 @@ mindmap-plugin: basic (or rich)
 
 更改设置后请重新打开 markmind ，以使设置生效。
 
+---
 
+### markdown 编辑器
+
+基于 codemirror 6 构建的所见即所得编辑器.
+
+markdown 格式支持
+1. 常用的格式，比如标题，链接，图片，加粗，倾斜，高亮，列表，有序列表等等
+2. 扩展支持 表格，上下标，脚注等等
+3. 支持 解析 [[]] 和 ![[]] obsidian 语法
+4. 支持解析 mermaid、flowchart和 html 标签
+5. 右击可以获取编辑菜单
+
+<img src ='https://github.com/MarkMindCkm/obsidian-markmind/assets/18719494/c31e468d-15fe-4dce-aab1-24c57d9b008d' width='800px'/>
