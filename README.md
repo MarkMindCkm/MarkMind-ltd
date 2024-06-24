@@ -1,3 +1,18 @@
+# WYSIWYG markdown editor 
+
+The markdown editor base on codemirror 6.
+
+format of markdown support
+ - basic format ,for example: head,bold,italic,code,highlight...
+ - extensions : table,subscript,superscript,math...
+ - support parse `[[ ]]` and `![[ ]]`
+ - support mermaid,flowchart and html tag
+ - use right click to get edit command board
+
+<img src ='https://github.com/MarkMindCkm/obsidian-markmind/assets/18719494/c31e468d-15fe-4dce-aab1-24c57d9b008d' width='800px'/>
+
+---
+
 # Markmind 
 
 [中文文档](https://github.com/MarkMindCkm/MarkMind-ltd/blob/main/readme-zh.md)  
@@ -102,17 +117,6 @@ The folder of save annotations is a relative path , for example, if your vault h
 If you change settings , please restart markmind .
 
 
-### WYSIWYG markdown editor 
 
-The markdown editor base on codemirror 6.
-
-format of markdown support
- - basic format ,for example: head,bold,italic,code,highlight...
- - extensions : table,subscript,superscript,math...
- - support parse `[[ ]]` and `![[ ]]`
- - support mermaid,flowchart and html tag
- - use right click to get edit command board
-
-<img src ='https://github.com/MarkMindCkm/obsidian-markmind/assets/18719494/c31e468d-15fe-4dce-aab1-24c57d9b008d' width='800px'/>
 
 
