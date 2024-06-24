@@ -1,7 +1,6 @@
 
 # Markmind 
 
----
 
 > Notice：This software can be used with obsidian , Back up your data and familiarize this software functions first.
 
